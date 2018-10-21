@@ -1,0 +1,18 @@
+% \comment{
+% sequential good
+% we need distributed
+% distributedd bad
+% distributed langs are hard to make. used to be slow
+% research is making progress
+% }
+Sequential programming has changed significantly in the last twenty years. Even conventionally low-level, imperative languages known for performance (C++, for example) have been adopting more expressive, high-level constructs. Maps, iterators and anonymous closures are commonplace, often integrated into the language's syntax and well-supported by compiler optimization~\cite{cppAdvanced}. These features are favourites among programmers, allowing them to avoid error-prone repetition and express high-level concepts concisely. Due to their ubiquity, programmers are usually familiar with these tools by the time they graduate from university~\cite{chapel}.
+
+In contrast, high-performance parallel and distributed programming use MPI and other granular message-passing frameworks as the de-facto standard~\cite{MPI}. By working on this sub-field, programmers have no choice but to step decades into the past, implementing complex communication protocols in terms of low-level concurrency primitives, such as locks~\cite{chapel}. This work is exceptionally error-prone for even the most well-educated experts~\cite{proper}. Programmers must manually ensure that their protocol, distributed all over the source files, solves the intended problem as expected~\cite{proper}. Historically, applicable high-level programming tools were unable to compete in terms of performance~\cite{rustSystem}.
+
+In recent years, academia has been alive with work exploring new options for feature-rich novelties. Sequential languages serve as inspiration, offering high-level expressivity largely by developing powerful compilers and languages rich enough to facilitate them~\cite{impala}. These languages bring with them new, desirable features such as verifiability and safety. As work continues, the shortfall in performance is shrinking, and in some cases we have found benchmarks rivaling that of established low-level message-passing approaches (such as MPI). We suggest that both academia and the industry should explore these new alternatives, as it is likely that a better fit for the programmer's use case already exists.
+
+In our work, we identify four necessary requirements for a parallel and distributed programming language; namely, such languages should enhance the programs' \textbf{reliability}, i.e. result in verifiably-correct implementations, enhance the programmers' \textbf{productivity} through high-level constructs, be rich enough to \textbf{express} real world problems, and achieve competitive \textbf{performance}. We present a variety of languages, such as Reo,  Chapel, Linda, which exemplify these features and our approach to parallel and distributed programming.
+
+The rest of the paper is structured as follows:
+Section~\ref{related} explains concepts relevant to this work. Section~\ref{feature} defines our set of desirable language requirements. Section~\ref{how} explores existing languages that exhibit these requirements. Section~\ref{tradeoff} discusses trade-offs that these languages make in exchange for their features, and what steps are taken (or could be taken in the future) to minimize the cost. 
+Finally, Section~\ref{conclusion} concludes our paper.

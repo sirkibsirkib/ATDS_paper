@@ -1,0 +1,51 @@
+
+% it's not much, but it's a starting point
+% general to dos: examples that support why do we want these features so we can cite them
+% develop each of the features
+The community sentiment is that the programmability of distributed and parallel systems is deficient~\cite{coordination,proper,chapel,langNec}. To establish a different perspective, we define requirements we value in a language for well suiting distributed and parallel systems, which allow the description of complex real-world problems. Development of large, reliable applications requires a clear, expressive language. Such systems are more effective when they utilize all the available resources.
+
+\subsection{Reliability}
+\label{sec:feature:reliability}
+We all desire our written programs to solve the intended problem without any bugs.
+This requires that the programming language and the constructs that compose it facilitate this reliability.
+M. Lohstroh~\cite{criticalPathReo} claims protocols are hard to understand and that proving their correctness is challenging. Formal verification techniques can check whether the specified requirements are met. A protocol may satisfy safety properties (`something bad will never happen'), or liveness properties (`something good will eventually happen'). 
+Even if a protocol is proven to behave as expected, formal methods can not guarantee for this holds once implemented~\cite{criticalPathReo}. The task of proving correctness becomes even more difficult if the utilized tools do not contain the required constructs for isolating protocol code. 
+
+\say{In the absence of proper structures to enforce (or at least encourage) good protocol programming practices, programmers frequently succumb to the temptation of not isolating protocol code.} -- Jongmans et al.~\cite{modularizationReo}.
+We need a reliable way to ensure that the implementation phase does not modify the correctness of a protocol. 
+This necessitates models which facilitate building correct programs, free of bugs. Smart compilers may understand whether bugs occur and prevent them from unintentionally passing through the compilation phase. Alternatively, the language constructs can lead the programmer to approach the problem in a way that avoids the introduction of errors at all.
+
+\subsection{Productivity}
+\label{sec:feature:clarity}
+%definition calrity
+%readability, clarity, beginner-friendly
+Parallel and distributed programming is unlike sequential programming; developers must express complex notions of parallelism, data or task distribution, communication and synchronization. These processes involve a lot of moving parts and can result in highly variable outcomes depending on how computation steps are ultimately interleaved. As such, this work can easily overwhelm a programmer. We wish to provide abstractions for such cases to make these tasks as easy as possible to facilitate productivity \cite{chapel}.
+
+E. A. Lee ~\cite{langNec} and M. Lohstroh ~\cite{criticalPathReo} consider concurrent programs extremely difficult to be understood by humans due to their nontransparent, non-deterministic behaviour; fundamentally, concurrent programs can result in more possible outcomes owing to the additional complexity introduced by arbitrary \textit{interleavings} of actions. Larger programs result in more complex code; in the concurrent and distributed context, this problem is amplified.
+B. L. Chamberlain et. al. ~\cite{chapel} state that the gap between the developers that can effectively program parallel machines and sequential ones enlarges with the time.
+%example for Distributed too?
+To combat this growing divide, programmers need all the help they can get, necessitating a more natural, intuitive way of understanding their programs. A language facilitating clearer, more abstract code also achieves productivity in another sense: non-technical people can reason about the implementation.
+%.
+
+In Subsection~\ref{sec:feature:reliability}, we asserted that protocols are difficult to understand and check for correctness. As further transformations of these protocols during implementation only make matters worse, we suggest a need to reduce these transformations by preferring higher-level code, closer to the original protocol.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Expressivity}
+\label{sec:feature:expressivity}
+A necessary requirement for solving real-world problems is the ability to effectively --and with minimal friction-- express them using the constructs provided by a language. 
+In case a language alone does not provide enough powerful constructs to illustrate a given problem, it must inter-operate with libraries or allow for a language extension for a collective effort in illustrating the problem.
+
+Furthermore, considering the already existing systems, migrating to a completely new environment is not always possible as it requires resources and willingness to do so. Many components have been developed without considering their integration in a medium where they must communicate and collaborate with other modules. Thus, the designed model must be able to accommodate such components~\cite{manifold}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Performance}
+\label{sec:feature:performance}
+We wish the performance of our systems to be comparable to the performance achievable with the available languages. A language that systemically inhibits the achievable performance of a distributed system cannot always compensate by providing other desirable features such as reliability.
+As such, we require that performance is not lost in the attempt to satisfy other requirements.
+
+% Thus, it is necessary that fulfillment of other requirements does not excessively
+% Thus, we require that the previous features do not prevent achieving a good performance. At the same time, we find it acceptable with a small trade off in performance for a high improvement in other features. 
+
+In the long term, we believe higher performance is naturally expected as a large user community brings more support, contribution and improvement to a language.
+In the short term, a solution is to offer features at multiple levels, higher-level features for easy programming but not a guaranteed excellent performance and lower-level features for accommodating parts of code which wish to be optimized for performance~\cite{chapel}.
+ 

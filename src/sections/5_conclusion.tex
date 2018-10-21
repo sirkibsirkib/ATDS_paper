@@ -1,0 +1,25 @@
+% \comment{
+% We have seen examples that work well. We conclude that things are moving in the right direction and that developers should start adopting them, researchers should continue exploring them and students should start learning them
+% We admit not all the languages we identified have all the perfect features we are interested in, however, just about all of them are more feature-rich than MPI+C
+% }
+%Take-home message: if the reader remembers only 1 thing about your work, what should it be?
+%Draw conclusions from your work (significance, limitations, learnt)
+%In what sense will the world be a better place now that you have solved this problem
+
+% \begin{enumerate}
+%     \item We found some strong contenders, many partial successes but Reo stands out as having achieved all 4
+%     \item many new langs found they bring new stuff to the table, reliability etc
+%     \item performance isn't an issue as much as it used to. in some cases it overachieved, but the issue isnt 100 percent resolved (future work)
+%     \item we completely and utterly SMASHED the illusion LOL, already better than C and MPI. hope more attention will cause issues to be resolved faster etc.
+% \end{enumerate}
+
+
+% \comment{Started a new suggestion underneath, but it contains stuff from above}
+
+
+With parallel and distributed computing systems becoming increasingly mainstream, we need the appropriate programming languages and tools to accommodate for this paradigm shift. Message passing frameworks such as MPI, based on primitives developed decades ago, are the most widely-used solutions for this concurrent context. However, after the examination of several novel programming languages, we argue that modern, high-level languages are just as good, if not better at solving these problems.
+
+We identify and elaborate on four crucial requirements in modern concurrent systems: reliability, productivity, expressivity and performance. Several modern languages make meaningful, innovative contributions in these areas. Reo, in particular, distinguished itself in making significant strides in all requirements at once, while Linda shows excellent scalability in memory management using clever load-balancing. We emphasize the importance of using a tool which can be applied intuitively in a complex setting, maintaining a comprehensible overview of the code and facilitating formal protocol validation. Languages such as Reo, Chapel and Linda accomplish this by abstracting away from low-level details while still providing the necessary expressiveness. This results in developers benefiting from a faster and smoother development process, arriving at a more structured implementation. We observe how high-level languages have begun to close the performance gap with low-level languages. For example, Rust, Impala and Reo achieve strong memory and protocol safety without performance cost by relying on well-defined type systems at compile-time. Furthermore, Reo's nature afforded the Proto-Runtime-Toolkit as a compilation target, resulting in programs that use system resources without OS scheduling overhead, circumstantially out-performing hand-written optimized C-code. We identified several such viable alternatives to established messages passing frameworks.
+
+We encourage developers to not stick to what they know and investigate these high-level programming languages. In many cases, it could result in a maintainable system with better reliability and performance.
+
